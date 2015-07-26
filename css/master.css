@@ -1,0 +1,30 @@
+.input-text {
+  margin-bottom: 5%;
+}
+.input-text-second {
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+.login {
+  margin-top: 5%;
+}
+.btn-login {
+  margin-top: 5%;
+  margin-bottom: 3%;
+  width: 100%;
+}
+#logo {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 4em;
+  color: #C4C4C4;
+}
+#login-text {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 2em;
+  color: #BABABA;
+  padding-top: 0.5em;
+}
+
+.main-frame {
+  padding-top: 20%;
+}
