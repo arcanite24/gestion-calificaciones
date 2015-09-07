@@ -1,9 +1,7 @@
 <?php
   @session_start();
-  if($_SESSION['logeado'] && $_SESSION['user'] == "Administrador") {
-    echo "Bienvenido administrador";
-  } else {
-    header('Location: index.php?wrong=1');
+  if(!$_SESSION['logeado'] && $_SESSION['user'] != "Administrador") {
+    header('Location: index.php?wrong=3');
   }
  ?>
  <!DOCTYPE html>
@@ -17,35 +15,7 @@
      <link rel="stylesheet" href="css/master.css">
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script type="text/javascript">
-     $(document).ready(function(){
-       $("#addgrupo").on('submit',function(event){
-         event.preventDefault();
-         data = $(this).serialize();
-         $.ajax({
-           type: "GET",
-           url: "submit-admin.php?type=addgrupo",
-           data: data
-         }).done(function( msg ) {
-             //alert(msg);
-             document.getElementById("alert-place-grupo").innerHTML = msg;
-         });
-        });
-
-        $("#addmateria").on('submit',function(event){
-          event.preventDefault();
-          data = $(this).serialize();
-          $.ajax({
-            type: "GET",
-            url: "submit-admin.php?type=addmateria",
-            data: data
-          }).done(function( msg2 ) {
-              //alert(msg);
-              document.getElementById("alert-place-materia").innerHTML = msg2;
-          });
-         });
-     });
-     </script>
+     <script src="js/admin.js"></script>
    </head>
    <body>
    <nav class="navbar navbar-default">
@@ -67,6 +37,12 @@
      </div>
    </nav>
     <div class="container">
+
+      <p>
+        TODO:
+        -Agregar AJAX agregar horario
+      </p>
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3>Añadir Grupo</h3>
@@ -151,4 +127,79 @@
           </form>
         </div>
       </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>Añadir Horario</h3>
+          </div>
+          <div class="panel-body">
+            <div class="" id="alert-place-horario"></div>
+            <form role="form" id="addhorario">
+              <div class="form-group">
+                <label for="grupo-horario">Grupo:</label>
+                <select class="form-control" name="grupo-horario" id="grupo-horario">
+                  <option value="null">---</option>
+                  <?php
+                    include("../include/conectar.php");
+                    $q1 = "SELECT * FROM grupos ORDER BY nombre_grupo";
+                    $r1 = mysql_query($q1)or die(mysql_error() . "error en la cuery");
+                    while ($f1 = mysql_fetch_array($r1)) {
+                      echo "<option value=".$f1['iD_grupo'].">".$f1['nombre_grupo']."</option>";
+                    }
+                   ?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="alumno-horario">Alumno:</label>
+                <select class="form-control" name="alumno-horario" id="alumno-horario">
+                  <option value="null">Selecciona un grupo.</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>Añadir Alumno</h3>
+          </div>
+          <div class="panel-body">
+            <div class="" id="alert-place-alumno"></div>
+            <form role="form" id="addalumno">
+              <div class="form-group">
+                <label for="alumno-usuario">Usuario:</label>
+                <input type="text" class="form-control" name="alumno-usuario" id="alumno-usuario" placeholder="Nombre de usuario del alumno.">
+              </div>
+              <div class="form-group">
+                <label for="alumno-contra">Contraseña:</label>
+                <input type="text" class="form-control" name="alumno-contra" id="alumno-contra" placeholder="Contraseña del alumno.">
+              </div>
+              <div class="form-group">
+                <label for="alumno-nombre">Nombre:</label>
+                <input type="text" class="form-control" name="alumno-nombre" id="alumno-nombre" placeholder="Nombre del alumno.">
+              </div>
+              <div class="form-group">
+                <label for="alumno-grupo">Grupo:</label>
+                <select class="form-control" name="alumno-grupo" id="alumno-grupo">
+                  <option value="null">---</option>
+                  <?php
+                    include("../include/conectar.php");
+                    $q1 = "SELECT * FROM grupos ORDER BY nombre_grupo";
+                    $r1 = mysql_query($q1)or die(mysql_error() . "error en la cuery");
+                    while ($f1 = mysql_fetch_array($r1)) {
+                      echo "<option value=".$f1['iD_grupo'].">".$f1['nombre_grupo']."</option>";
+                    }
+                   ?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="alumno-boleta">Boleta:</label>
+                <input type="text" class="form-control" name="alumno-boleta" id="alumno-boleta" placeholder="Boleta del alumno.">
+              </div>
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </form>
+          </div>
+        </div>
+
     </div>

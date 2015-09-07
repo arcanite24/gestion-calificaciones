@@ -27,6 +27,9 @@
               if($_GET['wrong'] == 2) {
                 echo '<div class="alert alert-success" role="alert">Haz salido correctamente..</div>';
               }
+              if($_GET['wrong'] == 3) {
+                echo '<div class="alert alert-danger" role="alert">No tienes acceso.</div>';
+              }
             }
           ?>
         </div>
