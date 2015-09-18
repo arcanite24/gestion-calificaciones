@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   $("#addgrupo").on('submit',function(event){
     event.preventDefault();
     data = $(this).serialize();
@@ -30,4 +31,25 @@ $(document).ready(function(){
          document.getElementById("alert-place-materia").innerHTML = msg2;
      });
     });
+
+    $("#addalumno").on('submit',function(event){
+      event.preventDefault();
+      data = $(this).serialize();
+      $.ajax({
+        type: "GET",
+        url: "submit-admin.php?type=addalumno",
+        data: data
+      }).done(function( msg2 ) {
+          document.getElementById("alert-place-alumno").innerHTML = msg2;
+      });
+     });
+
+     $("#grupo-horario").change(function() {
+       $.ajax({
+         type: "GET",
+         url: "php/ajax-admin.php?operacion=2&idg="+$("#grupo-horario").val()
+       }).done(function( grupoHorario ) {
+           document.getElementById("alumno-horario").innerHTML = grupoHorario;
+       });
+     });
 });

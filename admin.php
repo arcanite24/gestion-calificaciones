@@ -41,6 +41,8 @@
       <p>
         TODO:
         -Agregar AJAX agregar horario
+        Working On:
+        -Horarios
       </p>
 
       <div class="panel panel-default">
@@ -52,7 +54,7 @@
           <form role="form" id="addgrupo">
             <div class="form-group">
               <label for="nombre-grupo">Grupo:</label>
-              <input type="text" id="nombre-grupo" class="form-control" name="grupo" placeholder="Nombre del grupo">
+              <input type="text" id="nombre-grupo" class="form-control" name="grupo" placeholder="Nombre del grupo" required>
             </div>
             <div class="form-group">
               <label for="semestre">Semestre:</label>
@@ -79,7 +81,7 @@
           <form role="form" id="addmateria">
             <div class="form-group">
               <label for="nombre-materia">Nombre:</label>
-              <input type="text" id="nombre-materia" class="form-control" name="nombre-materia" placeholder="Nombre de la materia">
+              <input required type="text" id="nombre-materia" class="form-control" name="nombre-materia" placeholder="Nombre de la materia">
             </div>
             <div class="form-group">
               <label for="semestre-mat">Semestre:</label>
@@ -144,7 +146,7 @@
                     $q1 = "SELECT * FROM grupos ORDER BY nombre_grupo";
                     $r1 = mysql_query($q1)or die(mysql_error() . "error en la cuery");
                     while ($f1 = mysql_fetch_array($r1)) {
-                      echo "<option value=".$f1['iD_grupo'].">".$f1['nombre_grupo']."</option>";
+                      echo "<option value=".$f1['id_grupo'].">".$f1['nombre_grupo']."</option>";
                     }
                    ?>
                 </select>
@@ -169,37 +171,36 @@
             <form role="form" id="addalumno">
               <div class="form-group">
                 <label for="alumno-usuario">Usuario:</label>
-                <input type="text" class="form-control" name="alumno-usuario" id="alumno-usuario" placeholder="Nombre de usuario del alumno.">
+                <input type="text" required="required" class="form-control" name="alumno-usuario" id="alumno-usuario" placeholder="Nombre de usuario del alumno.">
               </div>
               <div class="form-group">
                 <label for="alumno-contra">Contraseña:</label>
-                <input type="text" class="form-control" name="alumno-contra" id="alumno-contra" placeholder="Contraseña del alumno.">
+                <input type="password" required="required" class="form-control" name="alumno-contra" id="alumno-contra" placeholder="Contraseña del alumno.">
               </div>
               <div class="form-group">
                 <label for="alumno-nombre">Nombre:</label>
-                <input type="text" class="form-control" name="alumno-nombre" id="alumno-nombre" placeholder="Nombre del alumno.">
+                <input type="text" required="required" class="form-control" name="alumno-nombre" id="alumno-nombre" placeholder="Nombre del alumno.">
               </div>
               <div class="form-group">
                 <label for="alumno-grupo">Grupo:</label>
                 <select class="form-control" name="alumno-grupo" id="alumno-grupo">
-                  <option value="null">---</option>
+                  <option value="-1">---</option>
                   <?php
                     include("../include/conectar.php");
                     $q1 = "SELECT * FROM grupos ORDER BY nombre_grupo";
                     $r1 = mysql_query($q1)or die(mysql_error() . "error en la cuery");
                     while ($f1 = mysql_fetch_array($r1)) {
-                      echo "<option value=".$f1['iD_grupo'].">".$f1['nombre_grupo']."</option>";
+                      echo "<option value=".$f1['id_de grupo'].">".$f1['nombre_grupo']."</option>";
                     }
                    ?>
                 </select>
               </div>
               <div class="form-group">
                 <label for="alumno-boleta">Boleta:</label>
-                <input type="text" class="form-control" name="alumno-boleta" id="alumno-boleta" placeholder="Boleta del alumno.">
+                <input type="text" required="required" class="form-control" name="alumno-boleta" id="alumno-boleta" placeholder="Boleta del alumno.">
               </div>
               <button type="submit" class="btn btn-default">Enviar</button>
             </form>
           </div>
         </div>
-
     </div>

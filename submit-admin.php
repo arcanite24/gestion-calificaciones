@@ -26,5 +26,22 @@
     } else {
       echo '<div class="alert alert-danger" role="alert">Error al agregar grupo.</div>';
     }
+  } elseif ($op == "addalumno") {
+    $user_alumno = $_GET['alumno-usuario'];
+    $contra_alumno = $_GET['alumno-contra'];
+    $nombre_alumno = $_GET['alumno-nombre'];
+    $grupo_alumno = $_GET['alumno-grupo'];
+    $boleta_alumno = $_GET['alumno-boleta'];
+    $query_addalumno = "INSERT INTO alumnos (user_alumno, pass_alumno, nombre_alumno, grupoid_alumno, horarioid_alumno, boleta_alumno)
+    VALUES ('$user_alumno', '$contra_alumno', '$nombre_alumno', '$grupo_alumno', -1, '$boleta_alumno')";
+    if($grupo_alumno != -1) {
+        mysql_query($query_addalumno)or die('<div class="alert alert-danger" role="alert">Error.</div>');
+        echo '<div class="alert alert-success" role="alert">Alumno agregado: ';
+        echo $nombre_alumno;
+        echo'</div>';
+    } else {
+      echo '<div class="alert alert-danger" role="alert">Error al agregar alumno, grupo invalido.</div>';
+    }
   }
+
 ?>
