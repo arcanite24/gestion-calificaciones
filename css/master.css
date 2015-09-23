@@ -25,6 +25,10 @@
   padding-top: 0.5em;
 }
 
+.panel-hor {
+  padding: 3px;
+}
+
 .main-frame {
   padding-top: 20%;
 }

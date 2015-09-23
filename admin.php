@@ -16,12 +16,13 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
      <script src="js/admin.js"></script>
+     <script src="js/horario.js"></script>
    </head>
    <body>
    <nav class="navbar navbar-default">
      <div class="container-fluid">
        <div class="navbar-header">
-         <a class="navbar-brand" href="#"><img src="http://www.cecuti.ipn.mx/v2/images/logos/IPN_LOGO2660.JPG" alt="logo" width="16" height="23" />Gestión IPN</a>
+         <a class="navbar-brand" href="#"><img src="http://www.cecuti.ipn.mx/v2/images/logos/IPN_LOGO2660.JPG" alt="logo" width="16" height="23" />Gestión IPN - Administrador</a>
        </div>
        <div>
          <ul class="nav navbar-nav">
@@ -130,37 +131,7 @@
         </div>
       </div>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3>Añadir Horario</h3>
-          </div>
-          <div class="panel-body">
-            <div class="" id="alert-place-horario"></div>
-            <form role="form" id="addhorario">
-              <div class="form-group">
-                <label for="grupo-horario">Grupo:</label>
-                <select class="form-control" name="grupo-horario" id="grupo-horario">
-                  <option value="null">---</option>
-                  <?php
-                    include("../include/conectar.php");
-                    $q1 = "SELECT * FROM grupos ORDER BY nombre_grupo";
-                    $r1 = mysql_query($q1)or die(mysql_error() . "error en la cuery");
-                    while ($f1 = mysql_fetch_array($r1)) {
-                      echo "<option value=".$f1['id_grupo'].">".$f1['nombre_grupo']."</option>";
-                    }
-                   ?>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="alumno-horario">Alumno:</label>
-                <select class="form-control" name="alumno-horario" id="alumno-horario">
-                  <option value="null">Selecciona un grupo.</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-default">Enviar</button>
-            </form>
-          </div>
-        </div>
+      <?php include('include/horario.php'); ?>
 
         <div class="panel panel-default">
           <div class="panel-heading">
