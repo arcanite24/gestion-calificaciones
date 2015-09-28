@@ -14,11 +14,12 @@ $(document).ready(function(){
           url: "php/ajax-admin.php?operacion=1",
           data: data
         }).done(function(msg3) {
-            document.getElementById("grupo-horario").innerHTML = msg3;
-            document.getElementById("alumno-grupo").innerHTML = msg3;
+            //document.getElementById("alumno-grupo").innerHTML = msg3;
+            //document.getElementById("hor-grupo").innerHTML = msg3;
         });
     });
    });
+
 
    $("#addmateria").on('submit',function(event){
      event.preventDefault();
@@ -31,6 +32,30 @@ $(document).ready(function(){
          document.getElementById("alert-place-materia").innerHTML = msg2;
      });
     });
+
+    $("#addhorario").on('submit',function(event){
+      event.preventDefault();
+      data = $(this).serialize();
+      $.ajax({
+        type: "GET",
+        url: "submit-admin.php?type=addhorario",
+        data: data
+      }).done(function( msgh ) {
+        document.getElementById("alert-place-horario").innerHTML = msgh;
+      });
+     });
+
+     $("#addmaestro").on('submit',function(event){
+       event.preventDefault();
+       data = $(this).serialize();
+       $.ajax({
+         type: "GET",
+         url: "submit-admin.php?type=addmaestro",
+         data: data
+       }).done(function( msgm ) {
+         document.getElementById("alert-place-maestro").innerHTML = msgm;
+       });
+      });
 
     $("#addalumno").on('submit',function(event){
       event.preventDefault();
@@ -50,6 +75,23 @@ $(document).ready(function(){
          url: "php/ajax-admin.php?operacion=2&idg="+$("#grupo-horario").val()
        }).done(function( grupoHorario ) {
            document.getElementById("alumno-horario").innerHTML = grupoHorario;
+       });
+     });
+
+     $('#hor-grupo').change(function() {
+       $.ajax({
+         type: "GET",
+         url: "php/ajax-horario.php?op=materia&grupo=" + $("#hor-grupo").val()
+       }).done(function( r1 ) {
+           document.getElementById("hor-mat1").innerHTML = r1;
+           document.getElementById("hor-mat2").innerHTML = r1;
+           document.getElementById("hor-mat3").innerHTML = r1;
+           document.getElementById("hor-mat4").innerHTML = r1;
+           document.getElementById("hor-mat5").innerHTML = r1;
+           document.getElementById("hor-mat6").innerHTML = r1;
+           document.getElementById("hor-mat7").innerHTML = r1;
+           document.getElementById("hor-mat8").innerHTML = r1;
+           document.getElementById("hor-mat9").innerHTML = r1;
        });
      });
 });

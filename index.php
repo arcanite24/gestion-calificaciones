@@ -1,3 +1,15 @@
+<?php
+@session_start();
+if (isset($_SESSION['logeado']) && isset($_SESSION['user'])) {
+  if($_SESSION['logeado'] && $_SESSION['user'] == "Administrador") {
+    header('Location: admin.php?tab=grupo');
+  }
+  if($_SESSION['logeado'] && $_SESSION['user'] == "Maestro") {
+    header('Location: maestro.php?tab=calificacion');
+  }
+}
+
+ ?>
 <!DOCTYPE html>
 <html>
   <head>

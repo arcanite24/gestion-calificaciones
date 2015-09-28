@@ -32,3 +32,8 @@
 .main-frame {
   padding-top: 20%;
 }
+
+nav.navbar {
+  border: 0;
+  border-radius: 0;
+}

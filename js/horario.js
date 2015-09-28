@@ -1,8 +1,13 @@
-$('#hor-grupo').change(function() {
+
+
+$("#addmateria").on('submit',function(event){
+  event.preventDefault();
+  data = $(this).serialize();
   $.ajax({
     type: "GET",
-    url: "php/ajax-admin.php?operacion=2&idg="+$("#hor-grupo").val()
-  }).done(function( grupoHorario ) {
-      document.getElementById("alumno-horario").innerHTML = grupoHorario;
+    url: "../php/ajax-horario.php?op=materia&sem-mat=" + $("#semestre-mat").val,
+    data: data
+  }).done(function( msg2 ) {
+      document.getElementById("alert-place-materia").innerHTML = msg2;
   });
-});
+ });

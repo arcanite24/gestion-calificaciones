@@ -3,7 +3,7 @@ $op = $_GET['operacion'];
 include("../include/conectar.php");
 
 if($op == 1) {
-  echo '<option value="-1">---</option>';
+  echo '<option value="-1">-- Seleccionar Grupo --</option>';
   $q1 = "SELECT * FROM grupos ORDER BY nombre_grupo";
   $r1 = mysql_query($q1)or die(mysql_error() . "error en la cuery");
   while ($f1 = mysql_fetch_array($r1)) {
@@ -23,10 +23,5 @@ if ($op == 2) {
   } else {
     echo '<option value="-1">No se encontraron alumnos en ese grupo.</option>';
   }
-}
-
-//Materias by grupo
-if($op == 3) {
-
 }
  ?>

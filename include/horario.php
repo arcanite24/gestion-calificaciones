@@ -7,7 +7,15 @@
     <form role="form" id="addhorario">
       <label for="hor-grupo">Grupo:</label>
       <select class="form-control" name="hor-grupo" id="hor-grupo">
-        <option value="option">Sacar grupos</option>
+        <option value="-1">-- Seleccionar grupos --</option>
+        <?php
+          include("include/conectar.php");
+          $q1 = "SELECT * FROM grupos ORDER BY nombre_grupo";
+          $r1 = mysql_query($q1)or die(mysql_error() . "error en la cuery");
+          while ($f1 = mysql_fetch_array($r1)) {
+            echo "<option value=".$f1['id_grupo'].">".$f1['nombre_grupo']."</option>";
+          }
+         ?>
       </select>
 
       <div class="row">
@@ -32,7 +40,7 @@
       </div>
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat1">
+          <select class="form-control" name="hor-mat1" id="hor-mat1">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -245,7 +253,7 @@
         <!-- Mat 2 -->
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat2">
+          <select class="form-control" name="hor-mat2" id="hor-mat2">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -458,7 +466,7 @@
         <!-- Mat 3 -->
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat3">
+          <select class="form-control" name="hor-mat3" id="hor-mat3">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -671,7 +679,7 @@
         <!-- Mat 4 -->
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat4">
+          <select class="form-control" name="hor-mat4" id="hor-mat4">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -884,7 +892,7 @@
         <!-- Mat 5 -->
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat5">
+          <select class="form-control" name="hor-mat5" id="hor-mat5">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -1097,7 +1105,7 @@
         <!-- Mat 6 -->
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat6">
+          <select class="form-control" name="hor-mat6" id="hor-mat6">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -1310,7 +1318,7 @@
         <!-- Mat 7 -->
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat7">
+          <select class="form-control" name="hor-mat7" id="hor-mat7">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -1523,7 +1531,7 @@
         <!-- Mat 8 -->
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat8">
+          <select class="form-control" name="hor-mat8" id="hor-mat8">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -1736,7 +1744,7 @@
         <!-- Mat 9 -->
 
         <div class="col-md-2 panel-hor">
-          <select class="form-control" name="hor-mat9">
+          <select class="form-control" name="hor-mat9" id="hor-mat9">
             <option value="-1">Seleccionar Materia:</option>
           </select>
         </div>
@@ -1947,5 +1955,6 @@
         </div>
 
     </div>
+    <input type="submit"value="Enviar" class="form-control">
     </form>
   </div>

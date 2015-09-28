@@ -1,57 +1,62 @@
 <?php
-  include("include/header.php");
+  @session_start();
+  //!$_SESSION['logeado'] &&
+  if($_SESSION['user'] != "Maestro") {
+    header('Location: index.php?wrong=3');
+  }
  ?>
-<div class="container">
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title>Gestión IPN</title>
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/theme.css">
+     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="css/master.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     <script src="js/maestro.js"></script>
+   </head>
+   <body>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3>Añadir Calificaciones</h3>
-    </div>
-    <div class="panel-body">
-      <form role="form">
-        <div class="form-group">
-          <label for="grupo">Grupo:</label>
-          <select class="form-control" name="grupo" id="grupo">
-            <option value="bd">1IV1</option>
-            <option value="bd">1IV2</option>
-            <option value="bd">1IV3</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="alumno">Alumno:</label>
-          <select class="form-control" name="alumno" id="alumno">
-            <option value="bd">Jose Perez Garcia</option>
-            <option value="bd">Jose Perez Garcia</option>
-            <option value="bd">Jose Perez Garcia</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="materia">Materia:</label>
-          <select class="form-control" name="alumno" id="materia">
-            <option value="bd">Algebra</option>
-            <option value="bd">Algebra II</option>
-            <option value="bd">Algebra III</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="calif">Calificación</label>
-          <select class="form-control" name="calificacion">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-default">Enviar</button>
-      </form>
-    </div>
-  </div>
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <a class="navbar-brand" href="#">Gestión IPN - Maestro</a>
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+             <span class="sr-only">Menu</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+         </div>
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+             <li class=<?php if($_GET['tab'] == 'calificacion') { echo('"active"'); } ?>><a href="?tab=calificacion">Asignar Calificacion <span class="sr-only">(current)</span></a></li>
+             <li class=<?php if($_GET['tab'] == 'materia') { echo('"active"'); } ?>><a href="?tab=materia">Añadir Materia</a></li>
+             <li class=<?php if($_GET['tab'] == 'horario') { echo('"active"'); } ?>><a href="?tab=horario">Añadir Horario</a></li>
+             <li class=<?php if($_GET['tab'] == 'alumno') { echo('"active"'); } ?>><a href="?tab=alumno">Añadir Alumno</a></li>
+             <li class=<?php if($_GET['tab'] == 'maestro') { echo('"active"'); } ?>><a href="?tab=maestro">Añadir Maestro</a></li>
+           </ul>
+           <ul class="nav navbar-nav navbar-right">
+             <li><a href="#"><span class="glyphicon glyphicon-book"></span> Perfil</a></li>
+             <li><a href="php/logout.php"><span class="glyphicon glyphicon-remove-circle"></span> Salir</a></li>
+           </ul>
+         </div>
+       </div>
+     </nav>
 
-</div>
+     <div class="container">
+       <?php
+         if(isset($_GET['tab'])) {
+             $tab = $_GET['tab'];
+             if ($tab == 'calificacion') {
+               include('include/maestro/maestro-calificacion.php');
+             }
+         } else {
+           include('include/admin/admin-grupo.php');
+         }
+        ?>
+     </div>
