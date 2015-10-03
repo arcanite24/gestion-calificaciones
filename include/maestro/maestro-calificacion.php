@@ -26,8 +26,17 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="alumno-boleta">Boleta:</label>
-        <input type="text" required="required" class="form-control" name="alumno-boleta" id="alumno-boleta" placeholder="Boleta del alumno.">
+        <label for="materia-setcal">Materias:</label>
+        <div class="row">
+          <div class="col-md-8">
+            <select required="required" class="form-control" name="materia-setcal" id="materia-setcal">
+              <option value="-1">Alumno no seleccionado</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <input type="number" class="form-control" name="cal-setcal" min="0" max="10" placeholder="Calificacion:" required>
+          </div>
+        </div>
       </div>
       <button type="submit" class="btn btn-default">Enviar</button>
     </form>

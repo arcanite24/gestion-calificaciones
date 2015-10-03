@@ -73,6 +73,9 @@
 
       }
 
+      $q_sethor = "UPDATE alumnos SET horarioid_alumno='$hor_idhor' WHERE grupoid_alumno='$hor_grupo'";
+      $r_sethor = mysql_query($q_sethor) or die('<div class="alert alert-danger" role="alert">Error.</div>');
+
       echo '<div class="alert alert-success" role="alert">Se añadio correctamente el horario.</div>';
 
     } else {

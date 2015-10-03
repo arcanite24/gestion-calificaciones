@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3>Añadir Alumno</h3>
+    <h3>Añadir Maestro</h3>
   </div>
   <div class="panel-body">
     <div class="" id="alert-place-maestro"></div>

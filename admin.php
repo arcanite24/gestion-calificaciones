@@ -1,6 +1,6 @@
 <?php
   @session_start();
-  //!$_SESSION['logeado'] && 
+  //!$_SESSION['logeado'] &&
   if($_SESSION['user'] != "Administrador") {
     header('Location: index.php?wrong=3');
   }
@@ -37,8 +37,8 @@
            <ul class="nav navbar-nav">
              <li class=<?php if($_GET['tab'] == 'grupo') { echo('"active"'); } ?>><a href="?tab=grupo">Añadir Grupo <span class="sr-only">(current)</span></a></li>
              <li class=<?php if($_GET['tab'] == 'materia') { echo('"active"'); } ?>><a href="?tab=materia">Añadir Materia</a></li>
-             <li class=<?php if($_GET['tab'] == 'horario') { echo('"active"'); } ?>><a href="?tab=horario">Añadir Horario</a></li>
              <li class=<?php if($_GET['tab'] == 'alumno') { echo('"active"'); } ?>><a href="?tab=alumno">Añadir Alumno</a></li>
+             <li class=<?php if($_GET['tab'] == 'horario') { echo('"active"'); } ?>><a href="?tab=horario">Añadir Horario</a></li>
              <li class=<?php if($_GET['tab'] == 'maestro') { echo('"active"'); } ?>><a href="?tab=maestro">Añadir Maestro</a></li>
            </ul>
            <ul class="nav navbar-nav navbar-right">

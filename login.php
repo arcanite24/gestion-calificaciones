@@ -10,7 +10,7 @@
 
 <?php
 mysql_connect("localhost","root","")or die("No se puede conectar a la base de datos.");
-mysql_select_db("test_ipn")or die("No se pudo seleccionar la base de datos.");
+mysql_select_db("ipn_gestion")or die("No se pudo seleccionar la base de datos.");
 
 $user = $_GET['username'];
 $pass = $_GET['password'];

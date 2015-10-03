@@ -17,5 +17,26 @@ if($op == "setcali") {
       echo $f1['nombre_alumno'] . '</option>';
     }
   }
+} elseif($op == "getmat-setcal") {
+  $grupo_alumno = $_GET['grupo'];
+  $q_getmat = "SELECT * FROM horarios_mat WHERE id_grupo='$grupo_alumno'";
+  $r2 = mysql_query($q_getmat) or die('<option value="-1">No se encontraron materias asignadas a ese grupo.</option>');
+
+  if(mysql_num_rows($r2) < 1) {
+    echo '<option value="-1">No se encontraron materias asignadas a ese grupo.</option>';
+  } else {
+    echo '<option value="-1">-- Selecciona una materia --</option>';
+
+    while ($f1 = mysql_fetch_assoc($r2)) {
+      echo '<option value="'.$f1['id_mat'].'">';
+      $mat_id = $f1['id_mat'];
+      $q_getmat_name = "SELECT * FROM materias WHERE id_materia='$mat_id'";
+      $r_getmat_name = mysql_query($q_getmat_name);
+      while ($f3 = mysql_fetch_assoc($r_getmat_name)) {
+        echo $f3['nombre'];
+      }
+      echo '</option>';
+    }
+  }
 }
  ?>
