@@ -9,15 +9,14 @@
 </html>
 
 <?php
-mysql_connect("localhost","root","")or die("No se puede conectar a la base de datos.");
-mysql_select_db("ipn_gestion")or die("No se pudo seleccionar la base de datos.");
+include('include/conectar.php');
 
 $user = $_GET['username'];
 $pass = $_GET['password'];
 $type = $_GET['usertype'];
 
 if($type == 1) {
-  $query = "SELECT * FROM alumnos WHERE alumno_nombre='$user' AND alumno_pass='$pass'";
+  $query = "SELECT * FROM alumnos WHERE user_alumno='$user' AND pass_alumno='$pass'";
 } elseif ($type == 2) {
   $query = "SELECT * FROM maestros WHERE maestro_user='$user' AND maestro_pass='$pass'";
 } elseif ($type == 3) {
@@ -25,11 +24,21 @@ if($type == 1) {
 }
 
 $resultado = mysql_query($query)or die(mysql_error());
+if($type == 1) {
+  while ($f = mysql_fetch_assoc($resultado)) {
+    $nombre = $f['nombre_alumno'];
+    $id_alumno = $f['id_alumno'];
+  }
+}
 
 if(mysql_num_rows($resultado) > 0) {
   session_start();
   if($type == 1) {
-    $query = "SELECT * FROM alumnos WHERE alumno_nombre='$user' AND alumno_pass='$pass'";
+    $_SESSION['user'] = "Alumno";
+    $_SESSION['logeado'] = true;
+    $_SESSION['nombre'] = $nombre;
+    $_SESSION['id_alumno'] = $id_alumno;
+    header('Location: alumno.php?tab=showcali');
   } elseif ($type == 2) {
     $_SESSION['user'] = "Maestro";
     $_SESSION['logeado'] = true;

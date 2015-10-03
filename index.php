@@ -55,7 +55,7 @@ if (isset($_SESSION['logeado']) && isset($_SESSION['user'])) {
               <option value="2">Maestro</option>
               <option value="3">Administrador</option>
             </select>
-            <input class="btn-login btn bg-primary" type="submit" name="submit" value="Enviar">
+            <input class="btn btn-login bg-primary" type="submit" name="submit" value="Enviar">
           </div>
         </form>
       </div>
