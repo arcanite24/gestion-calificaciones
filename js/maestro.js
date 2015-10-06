@@ -26,6 +26,9 @@ $(document).ready(function(){
       data: data
     }).done(function( msgcali ) {
       document.getElementById("alert-place-cali").innerHTML = msgcali;
+      setTimeout(function() {
+        document.getElementById("alert-place-cali").innerHTML = "";
+      }, 2000);
     });
    });
 

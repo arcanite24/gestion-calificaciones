@@ -9,6 +9,9 @@ $(document).ready(function(){
       data: data
     }).done(function(msg) {
         document.getElementById("alert-place-grupo").innerHTML = msg;
+        setTimeout(function() {
+          document.getElementById("alert-place-grupo").innerHTML = "";
+        }, 2000);
         $.ajax({
           type: "GET",
           url: "php/ajax-admin.php?operacion=1",
@@ -30,8 +33,26 @@ $(document).ready(function(){
        data: data
      }).done(function( msg2 ) {
          document.getElementById("alert-place-materia").innerHTML = msg2;
+         setTimeout(function() {
+           document.getElementById("alert-place-materia").innerHTML = "";
+         }, 2000);
      });
     });
+
+    $("#setmat").on('submit',function(event){
+      event.preventDefault();
+      data = $(this).serialize();
+      $.ajax({
+        type: "GET",
+        url: "submit-admin.php?type=setmat",
+        data: data
+      }).done(function( msg2 ) {
+          document.getElementById("alert-place-setmat").innerHTML = msg2;
+          setTimeout(function() {
+            document.getElementById("alert-place-setmat").innerHTML = "";
+          }, 2000);
+      });
+     });
 
     $("#addhorario").on('submit',function(event){
       event.preventDefault();
@@ -42,6 +63,9 @@ $(document).ready(function(){
         data: data
       }).done(function( msgh ) {
         document.getElementById("alert-place-horario").innerHTML = msgh;
+        setTimeout(function() {
+          document.getElementById("alert-place-horario").innerHTML = "";
+        }, 2000);
       });
      });
 
@@ -54,6 +78,9 @@ $(document).ready(function(){
          data: data
        }).done(function( msgm ) {
          document.getElementById("alert-place-maestro").innerHTML = msgm;
+         setTimeout(function() {
+           document.getElementById("alert-place-maestro").innerHTML = "";
+         }, 2000);
        });
       });
 
@@ -66,6 +93,9 @@ $(document).ready(function(){
         data: data
       }).done(function( msg2 ) {
           document.getElementById("alert-place-alumno").innerHTML = msg2;
+          setTimeout(function() {
+            document.getElementById("alert-place-alumno").innerHTML = "";
+          }, 2000);
       });
      });
 

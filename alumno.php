@@ -15,9 +15,14 @@
      <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
      <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200' rel='stylesheet' type='text/css'>
      <link rel="stylesheet" href="css/master.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-     <script src="js/alumno.js"></script>
+     <script src="js/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <!--<script src="js/alumno.js"></script>-->
+     <?php
+      if($_GET['tab'] == 'chat') {
+        echo '<script src="js/chatalumno.js"></script>';
+      }
+      ?>
    </head>
    <body>
 
@@ -36,6 +41,7 @@
            <ul class="nav navbar-nav">
              <li class=<?php if($_GET['tab'] == 'showcali') { echo('"active"'); } ?>><a href="?tab=showcali">Ver Calificaciones <span class="sr-only">(current)</span></a></li>
              <li class=<?php if($_GET['tab'] == 'showhora') { echo('"active"'); } ?>><a href="?tab=showhora">Ver Horario <span class="sr-only">(current)</span></a></li>
+             <li class=<?php if($_GET['tab'] == 'chat') { echo('"active"'); } ?>><a href="?tab=chat">Chat <span class="sr-only">(current)</span></a></li>
            </ul>
            <ul class="nav navbar-nav navbar-right">
              <li><a href="#"><span class="glyphicon glyphicon-book"></span> Perfil</a></li>
@@ -52,8 +58,14 @@
              if ($tab == 'showcali') {
                include('include/alumno/alumno-showcali.php');
              }
+             if ($tab == 'showhora') {
+               include('include/alumno/alumno-showhora.php');
+             }
+             if ($tab == 'chat') {
+               include('include/alumno/alumno-chat.php');
+             }
          } else {
-           include('include/admin/admin-grupo.php');
+           include('include/alumno/alumno-showcali.php');
          }
         ?>
      </div>

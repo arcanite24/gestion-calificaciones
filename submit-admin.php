@@ -92,6 +92,13 @@
     echo $m_nombre;
     echo'</div>';
 
+  } elseif($op == "setmat") {
+    $id_maestro = $_GET['maestro-setmat'];
+    $id_materia = $_GET['mat-setmat'];
+    $q = "INSERT INTO materia_maestro (id_maestro, id_materia) VALUES ('$id_maestro', '$id_materia')";
+    $r = mysql_query($q) or die('<div class="alert alert-danger" role="alert">Error.</div>');
+
+    echo '<div class="alert alert-success" role="alert">Materia asignada</div>';
   }
 
 ?>

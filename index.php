@@ -23,13 +23,14 @@ if (isset($_SESSION['logeado']) && isset($_SESSION['user'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </head>
   <body>
-    <div class="container main-frame">
+    <div class="container">
 
       <div class="col-md-8 col-md-offset-2 text-center">
+        <img src="img/logologin.png" alt="Logo IPN" class="logoimg" />
         <p id="logo">Gestión IPN</p>
       </div>
 
-      <div class="input-group panel panel-default col-md-6 col-md-offset-3 text-center login">
+      <div class="input-group panel panel-default col-md-6 col-md-offset-3 text-center">
         <div class="" id="alert-place-login">
           <?php
             if(isset($_GET['wrong'])) {

@@ -15,8 +15,8 @@
      <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
      <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200' rel='stylesheet' type='text/css'>
      <link rel="stylesheet" href="css/master.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     <script src="js/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
      <script src="js/admin.js"></script>
      <script src="js/horario.js"></script>
    </head>
@@ -40,6 +40,7 @@
              <li class=<?php if($_GET['tab'] == 'alumno') { echo('"active"'); } ?>><a href="?tab=alumno">Añadir Alumno</a></li>
              <li class=<?php if($_GET['tab'] == 'horario') { echo('"active"'); } ?>><a href="?tab=horario">Añadir Horario</a></li>
              <li class=<?php if($_GET['tab'] == 'maestro') { echo('"active"'); } ?>><a href="?tab=maestro">Añadir Maestro</a></li>
+             <li class=<?php if($_GET['tab'] == 'setmatmaestro') { echo('"active"'); } ?>><a href="?tab=setmatmaestro">Asignar Materia a maestro</a></li>
            </ul>
            <ul class="nav navbar-nav navbar-right">
              <li><a href="#"><span class="glyphicon glyphicon-book"></span> Perfil</a></li>
@@ -67,6 +68,9 @@
             }
             if ($tab == 'maestro') {
               include('include/admin/admin-maestro.php');
+            }
+            if ($tab == 'setmatmaestro') {
+              include('include/admin/admin-setmatmaestro.php');
             }
         } else {
           include('include/admin/admin-grupo.php');

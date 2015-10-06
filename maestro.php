@@ -15,9 +15,14 @@
      <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
      <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200' rel='stylesheet' type='text/css'>
      <link rel="stylesheet" href="css/master.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     <script src="js/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
      <script src="js/maestro.js"></script>
+     <?php
+      if($_GET['tab'] == 'chat') {
+        echo '<script src="js/chatmaestro.js"></script>';
+      }
+      ?>
    </head>
    <body>
 
@@ -34,7 +39,8 @@
          </div>
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
            <ul class="nav navbar-nav">
-             <li class=<?php if($_GET['tab'] == 'calificacion') { echo('"active"'); } ?>><a href="?tab=calificacion">Asignar Calificacion <span class="sr-only">(current)</span></a></li>             
+             <li class=<?php if($_GET['tab'] == 'calificacion') { echo('"active"'); } ?>><a href="?tab=calificacion">Asignar Calificacion <span class="sr-only">(current)</span></a></li>
+             <li class=<?php if($_GET['tab'] == 'chat') { echo('"active"'); } ?>><a href="?tab=chat">Chat <span class="sr-only">(current)</span></a></li>
            </ul>
            <ul class="nav navbar-nav navbar-right">
              <li><a href="#"><span class="glyphicon glyphicon-book"></span> Perfil</a></li>
@@ -50,6 +56,9 @@
              $tab = $_GET['tab'];
              if ($tab == 'calificacion') {
                include('include/maestro/maestro-calificacion.php');
+             }
+             if ($tab == 'chat') {
+               include('include/maestro/maestro-chat.php');
              }
          } else {
            include('include/admin/admin-grupo.php');

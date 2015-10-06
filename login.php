@@ -28,6 +28,11 @@ if($type == 1) {
   while ($f = mysql_fetch_assoc($resultado)) {
     $nombre = $f['nombre_alumno'];
     $id_alumno = $f['id_alumno'];
+    $id_horario = $f['horarioid_alumno'];
+  }
+} elseif ($type == 2) {
+  while ($f = mysql_fetch_assoc($resultado)) {
+    $id_maestro = $f['id_maestro'];
   }
 }
 
@@ -38,10 +43,12 @@ if(mysql_num_rows($resultado) > 0) {
     $_SESSION['logeado'] = true;
     $_SESSION['nombre'] = $nombre;
     $_SESSION['id_alumno'] = $id_alumno;
+    $_SESSION['id_horario'] = $id_horario;
     header('Location: alumno.php?tab=showcali');
   } elseif ($type == 2) {
     $_SESSION['user'] = "Maestro";
     $_SESSION['logeado'] = true;
+    $_SESSION['id_maestro'] = $id_maestro;
     header('Location: maestro.php?tab=calificacion');
   } elseif ($type == 3) {
     $_SESSION['user'] = "Administrador";
